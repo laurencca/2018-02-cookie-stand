@@ -10,3 +10,6 @@ First I created a new repository in GitHub, and set up all my basic files: html,
 * Washington Square
 * Sellwood
 * Pearl District
+
+# Step 2
+Next I got some help to add a function to calculate the average number of cookies purchased per hour based on a random number between min. and max. guests per day, and pushed the result of that calc for each hour of operation into an array using a for loop. 
