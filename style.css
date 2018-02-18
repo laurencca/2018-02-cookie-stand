@@ -23,3 +23,7 @@ th {
   padding: 4px 8px;
   background-color: #dddddd;
 }
+
+ul li:last-child {
+  font-weight: bold;
+}
