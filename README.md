@@ -14,5 +14,8 @@ First I created a new repository in GitHub, and set up all my basic files: html,
 # Step 2
 Next I got some help to add a function to calculate the average number of cookies purchased per hour based on a random number between min. and max. guests per day, and pushed the result of that calc for each hour of operation into an array using a for loop.
 
-# Step 2
+# Step 3
 Next I reconfigured the function to multiply the random number times the average number of cookies bought per day, then figured out how to display the results of the calculation per hour on the webpage, and added a total.
+
+# Step 4
+Next I created a style guide per the assignment instructions.

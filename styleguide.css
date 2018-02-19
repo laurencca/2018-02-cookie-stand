@@ -1,0 +1,29 @@
+body {
+  background-color: #ffdacc;
+  font-family: 'Palatino', serif;
+}
+
+#title {
+  text-align: center;
+  color: black;
+}
+
+.alt-h1 {
+  font-size: 25px;
+  color: #6666ff;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ff9966;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #808080;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffcc00;
+}
