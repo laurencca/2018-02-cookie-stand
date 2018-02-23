@@ -72,11 +72,12 @@ div ul {
 
 ul li:last-child {
   font-weight: bold;
-  
-/*table {
+}
+
+table {
   margin: 0 auto;
+  border-collapse: collapse;
   border-spacing: 0;
-  border-collapse: separate;
 }
 
 td {
@@ -90,5 +91,3 @@ th {
   padding: 4px 8px;
   background-color: #dddddd;
 }
-
-}*/
