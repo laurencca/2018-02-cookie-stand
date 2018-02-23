@@ -118,15 +118,4 @@ for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
 }
 
 
-
-
-
-/*
-var storeContainer = document.getElementById('pioneer');
-var storeList = '<h3>' + pioneer.storeName + '</h3>';
-pioneer.getAllCookies();
-for (var i = 0; i < hoursOpen.length; i++) {
-  storeList += '<li>' + hoursOpen[i] + ': ' + pioneer.allCookiesPerHour[i] + '</li>';
-}
-storeContainer.innerHTML = storeList;
-*/
+//storeContainer.innerHTML += storeList + '</ul>';
