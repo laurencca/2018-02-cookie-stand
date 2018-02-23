@@ -119,6 +119,8 @@ for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
 
 
 
+
+
 /*
 var storeContainer = document.getElementById('pioneer');
 var storeList = '<h3>' + pioneer.storeName + '</h3>';

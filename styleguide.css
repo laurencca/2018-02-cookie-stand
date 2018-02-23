@@ -10,12 +10,12 @@ body {
 
 .alt-h1 {
   font-size: 25px;
-  color: #6666ff;
+  color: black;
 }
 
 h1 {
   font-family: 'Montserrat', sans-serif;
-  color: #ff9966;
+  color: #ff5050;
 }
 
 h2 {
@@ -25,5 +25,5 @@ h2 {
 
 h3 {
   font-family: 'Montserrat', sans-serif;
-  color: #ffcc00;
+  color: #6666ff;
 }
