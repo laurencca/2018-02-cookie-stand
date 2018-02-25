@@ -10,57 +10,58 @@ function getCookiesPerHour(minCustomer, maxCustomer, avgCookiesPerCustomer) {
 }
 
 //1. implement a constructor function
-var Store = function(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer, totalCookies) {
+var Store = function(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustomer = minCustomer;
   this.maxCustomer = maxCustomer;
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
-  this.totalCookies = totalCookies
+  this.totalCookies = 0;
+  this.allCookiesPerHour = [];
+
+  this.getAllCookies = function() {
+    for (var i = 0; i < hoursOpen.length; i++) {
+      var cookies = Math.round(getCookiesPerHour(this.minCustomer, this.maxCustomer, this.avgCookiesPerCustomer));
+      this.allCookiesPerHour.push(cookies);
+      this.totalCookies += cookies;
+    }
+  }
 }
 
 var stores = [];
-stores.push(new Store('Pioneer Square', 17, 58, 5.2, 0))
-stores.push(new Store('Portland Airport', 6, 24, 1.2, 0))
-stores.push(new Store('Washington Square', 11, 38, 1.9, 0))
-stores.push(new Store('Sellwood', 17, 48, 3.3, 0))
-stores.push(new Store('Pearl District', 3, 24, 2.6, 0))
+stores.push(new Store('Pioneer Square', 17, 58, 5.2))
+stores.push(new Store('Portland Airport', 6, 24, 1.2))
+stores.push(new Store('Washington Square', 11, 38, 1.9))
+stores.push(new Store('Sellwood', 17, 48, 3.3))
+stores.push(new Store('Pearl District', 3, 24, 2.6))
 
 //2. present the store data in a table format
 function makeTable() {
   var table = document.getElementById('store-container');
   table.innerHTML = "<tr><th>Store Name</th><th>Cookies Per Hour</th><tr>"
 
-  for (var index = 0; index < stores.length; index++) {
+  for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
+    var store = stores[storeIndex];
+    store.getAllCookies();
+
     row = document.createElement("tr");
     cell = document.createElement("td");
-    cell.innerHTML = stores[index].storeName;
+    cell.innerHTML = store.storeName;
     row.appendChild(cell);
     cell = document.createElement("td");
-    cell.innerHTML = stores[index].avgCookiesPerCustomer;
+    cell.innerHTML = store.avgCookiesPerCustomer;
     row.appendChild(cell);
     table.appendChild(row);
    }
 }
-
 makeTable();
 
+//var stores = [pioneer, airport, washington, sellwood, pearl];
 
-  getAllCookies: function() {
-    for (var i = 0; i < hoursOpen.length; i++) {
-      var cookies = Math.round(getCookiesPerHour(this.minCustomer, this.maxCustomer, this.avgCookiesPerCustomer));
-      this.allCookiesPerHour.push(cookies);
-      this.totalCookies += cookies;
-    }
-  },
-  allCookiesPerHour: []
+//var storeContainer = document.getElementById('store-container');
+//for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
+  //var store = stores[storeIndex];
 
 
-var stores = [pioneer, airport, washington, sellwood, pearl];
-
-var storeContainer = document.getElementById('store-container');
-for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
-  var store = stores[storeIndex];
-  store.getAllCookies();
   var storeList = '<ul><h3>' + store.storeName + '</h3>';
   for(var hourIndex = 0; hourIndex < hoursOpen.length; hourIndex ++) {
     storeList += '<li>' + hoursOpen[hourIndex] + ': ' + store.allCookiesPerHour[hourIndex] + '</li>';
@@ -68,9 +69,6 @@ for (var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
   storeList += '<li>' + 'TOTAL: ' + store.totalCookies + '</li>';
   storeContainer.innerHTML += storeList + '</ul>';
 }
-
-
-
 
 //Old code below
 
