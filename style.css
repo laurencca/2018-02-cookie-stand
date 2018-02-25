@@ -12,7 +12,7 @@ footer {
 }
 
 nav ul {
-  width: 40%;
+  width: 55%;
   text-align: center;
   margin: auto;
   background-color: #ff9966;
@@ -26,6 +26,10 @@ nav li {
   font-weight: bold;
   margin-right: 40px;
   padding: 0;
+}
+
+nav ul li:hover {
+  color: #808080;
 }
 
 .image1 {

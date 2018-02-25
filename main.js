@@ -39,23 +39,29 @@ stores.push(new Store('Pearl District', 3, 24, 2.6))
 
 //function to create table header
 function makeTableHeader() {
-  var row = document.createElement('tr');
-  var cell = document.createElement('td');
-  row.appendChild(cell);
+  var row = document.createElement('tr'); //create table row
+  var cell = document.createElement('td'); //create blank table cell
+  row.appendChild(cell); //append blank cell to row
 
+  //for loop to add new cell for each hour contained in hoursOpen array
   for(var hourIndex = 0; hourIndex < hoursOpen.length; hourIndex++) {
     var cell = document.createElement('td');
     cell.innerText = hoursOpen[hourIndex];
     row.appendChild(cell);
   }
 
-  table.appendChild(row);
+  cell = document.createElement('td'); //create table cell for cookie totals
+  cell.innerText = "TOTAL";
+  row.appendChild(cell);
+
+  table.appendChild(row); //append row to table
 }
 
 //2. function to present the store data in a table format
 function makeTable() {
-  makeTableHeader();
+  makeTableHeader(); //calling makeTableHeader function to create table header
 
+  //for loop to add new table row for each store in storeName property
   for(var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
     var store = stores[storeIndex];
     var row = document.createElement('tr');
@@ -63,16 +69,23 @@ function makeTable() {
     cell.innerText = store.storeName;
     row.appendChild(cell);
 
-    store.getAllCookies();
+    store.getAllCookies(); //calling getAllCookies function to populate allCookiesPerHour array
 
+    //for loop to add new table cells for allCookiesPerHour for each hoursOpen
     for(var cookiesIndex = 0; cookiesIndex < store.allCookiesPerHour.length; cookiesIndex++) {
-      cell = document.createElement('td')
+      cell = document.createElement('td');
       cell.innerText = store.allCookiesPerHour[cookiesIndex];
       row.appendChild(cell);
     }
-    table.appendChild(row);
+
+    //add total of allCookiesPerHour for each store in TOTAL column
+    cell = document.createElement('td');
+    cell.innerText = store.totalCookies;
+    row.appendChild(cell);
+
+    table.appendChild(row); //append rows to table
   }
 
 }
 
-makeTable();
+makeTable(); //calling makeTable function to create table
