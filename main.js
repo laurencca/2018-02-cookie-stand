@@ -8,11 +8,11 @@ var hoursOpen = ['10:00 am', '11:00 am', '12:00 pm', '1:00 pm', '2:00 pm', '3:00
 var table = document.getElementById('store-container');
 
 //function to get average number of cookies purchased per hour
-function getCookiesPerHour(minCustomer, maxCustomer, avgCookiesPerCustomer) {
+function getAvgCookiesPerHour(minCustomer, maxCustomer, avgCookiesPerCustomer) {
   return ((Math.floor(Math.random() * (maxCustomer - minCustomer + 1)) + minCustomer) * avgCookiesPerCustomer);
 }
 
-//1. implement a constructor function
+//constructor function for stores
 var Store = function(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer) {
   this.storeName = storeName;
   this.minCustomer = minCustomer;
@@ -21,15 +21,17 @@ var Store = function(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer)
   this.totalCookies = 0;
   this.allCookiesPerHour = [];
 
-  this.getAllCookies = function() {
+  //function to get total cookies for each hoursOpen
+  this.getCookiesPerHour = function() {
     for (var i = 0; i < hoursOpen.length; i++) {
-      var cookies = Math.round(getCookiesPerHour(this.minCustomer, this.maxCustomer, this.avgCookiesPerCustomer));
+      var cookies = Math.round(getAvgCookiesPerHour(this.minCustomer, this.maxCustomer, this.avgCookiesPerCustomer));
       this.allCookiesPerHour.push(cookies);
       this.totalCookies += cookies;
     }
   }
 }
 
+//store array
 var stores = [];
 stores.push(new Store('Pioneer Square', 17, 58, 5.2))
 stores.push(new Store('Portland Airport', 6, 24, 1.2))
@@ -57,9 +59,10 @@ function makeTableHeader() {
   table.appendChild(row); //append row to table
 }
 
-//2. function to present the store data in a table format
+//function to present the store data in a table format
 function makeTable() {
-  makeTableHeader(); //calling makeTableHeader function to create table header
+  table.innerHTML = '';
+  makeTableHeader(); //call makeTableHeader function to create table header
 
   //for loop to add new table row for each store in storeName property
   for(var storeIndex = 0; storeIndex < stores.length; storeIndex++) {
@@ -69,7 +72,8 @@ function makeTable() {
     cell.innerText = store.storeName;
     row.appendChild(cell);
 
-    store.getAllCookies(); //calling getAllCookies function to populate allCookiesPerHour array
+    store.allCookiesPerHour = [];
+    store.getCookiesPerHour(); //call getAllCookies function to populate allCookiesPerHour array
 
     //for loop to add new table cells for allCookiesPerHour for each hoursOpen
     for(var cookiesIndex = 0; cookiesIndex < store.allCookiesPerHour.length; cookiesIndex++) {
@@ -85,7 +89,16 @@ function makeTable() {
 
     table.appendChild(row); //append rows to table
   }
-
 }
 
-makeTable(); //calling makeTable function to create table
+//function to add store
+function addStore() {
+  storeName = prompt("Store Name:");
+  minCustomer = prompt("Minimum Customers:");
+  maxCustomer = prompt("Maximum Customers:");
+  avgCookiesPerCustomer = prompt("Average Cookies per Customer:");
+  stores.push(new Store(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer));
+  makeTable();
+}
+
+makeTable(); //call makeTable function to create table
