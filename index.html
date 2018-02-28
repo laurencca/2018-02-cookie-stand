@@ -11,7 +11,7 @@
   <body>
 
     <header>
-      <img src="./images/salmon.png" alt="Salmon Logo" class="image1" />
+      <img src="./images/salmon.png" alt="Salmon Logo" onmouseover="this.src='./images/family.jpg'" onmouseout="this.src='./images/salmon.png'" />
       <h1>Salmon Cookies by Pat</h1>
       <nav>
         <ul>
@@ -30,7 +30,18 @@
       <table id="store-container"></table>
       <br>
       <br>
-      <input type="button" value="Add Store" onclick="addStore()">
+    </section>
+    <section>
+      <form id="form">
+        <fieldset>
+        <label>Store Name: <input type="text" name="storeName"></label><br>
+        <label>Minimum Customer: <input type="text" name="minCustomer"></label><br>
+        <label>Maximum Customer: <input type="text" name="maxCustomer"></label><br>
+        <label>Average Cookies: <input type="text" name="avgCookiesPerCustomer"></label><br>
+        <input type="button" value="Add Store" onclick="addStore()">
+        <input type="reset" value="Reset the Form" onclick="thankYou()">
+      </fieldset>
+      </form>
     </section>
 
     <footer>

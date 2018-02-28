@@ -72,8 +72,10 @@ function makeTable() {
     cell.innerText = store.storeName;
     row.appendChild(cell);
 
-    store.allCookiesPerHour = [];
-    store.getCookiesPerHour(); //call getAllCookies function to populate allCookiesPerHour array
+    // store.allCookiesPerHour = [];
+    if(store.allCookiesPerHour.length == 0) {
+      store.getCookiesPerHour(); //call getAllCookies function to populate allCookiesPerHour array
+    }
 
     //for loop to add new table cells for allCookiesPerHour for each hoursOpen
     for(var cookiesIndex = 0; cookiesIndex < store.allCookiesPerHour.length; cookiesIndex++) {
@@ -93,12 +95,17 @@ function makeTable() {
 
 //function to add store
 function addStore() {
-  storeName = prompt("Store Name:");
-  minCustomer = prompt("Minimum Customers:");
-  maxCustomer = prompt("Maximum Customers:");
-  avgCookiesPerCustomer = prompt("Average Cookies per Customer:");
+  storeName = form.storeName.value;
+  minCustomer = form.minCustomer.value;
+  maxCustomer = form.maxCustomer.value;
+  avgCookiesPerCustomer = form.avgCookiesPerCustomer.value;
   stores.push(new Store(storeName, minCustomer, maxCustomer, avgCookiesPerCustomer));
   makeTable();
+}
+
+//function to thank user for entering input
+function thankYou() {
+  alert('Thank you for the new information!');
 }
 
 makeTable(); //call makeTable function to create table
